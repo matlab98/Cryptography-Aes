@@ -1,7 +1,7 @@
 ﻿using CryptographyAes.WebApi.Entities.Dto;
-using System.Net;
 
 namespace CryptographyAes.WebApi.Business;
+
 public interface IAesService
 {
     Task<DefaultResponse> AesEncrypt(ConfigAesRequest config, AesEncryptRequest request);

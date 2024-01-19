@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace CryptographyAes.WebApi.Entities.Dto;
+
 public class ConfigAesRequest
 {
     [FromHeader]

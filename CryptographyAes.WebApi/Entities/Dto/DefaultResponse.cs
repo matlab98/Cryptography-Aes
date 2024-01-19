@@ -11,9 +11,6 @@ public class DefaultResponse
     public string statusDescription { get; set; }
 
     [JsonIgnore]
-    public string transactionId { get; set; }
-
-    [JsonIgnore]
     public dynamic data { get; set; }
 }
 

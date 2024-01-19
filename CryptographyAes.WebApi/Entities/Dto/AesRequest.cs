@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-
 namespace CryptographyAes.WebApi.Entities.Dto;
 
 public class AesEncryptRequest
