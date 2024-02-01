@@ -1,4 +1,5 @@
 ﻿using CryptographyAes.WebApi.Entities.Dto;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 namespace CryptographyAes.WebApi.Business.ApplicationService;
@@ -34,6 +35,32 @@ public class AesService : IAesService
             };
 
         }
+    }    public async Task<DefaultResponse> AesSafeEncrypt(ConfigAesRequest config, AesEncryptRequest request)
+    {
+        try
+        {
+            string decryptedValue = Base64UrlEncoder.Encode(CryptographyAes.WebApi.Utilities.Cryptography.CryptographyAes.AesEncrypt(config, request.toEncrypt));
+
+            return new DefaultResponse()
+            {
+                status = true,
+                statusDescription = "Se realiza la encriptación.",
+                data = new {
+                    encryptedData = decryptedValue
+                }
+            };
+
+        }
+        catch (Exception ex)
+        {
+            return new DefaultResponse()
+            {
+                status = false,
+                statusDescription = "Error en el proceso de encriptación.",
+                data = new { error = ex.Message }
+            };
+
+        }
     }
 
     public async Task<DefaultResponse> AesDecrypt(ConfigAesRequest config, AesDecryptRequest request)
@@ -47,6 +74,34 @@ public class AesService : IAesService
                 status = true,
                 statusDescription = "Se realiza la encriptación.",
                 data = new {
+                    encryptedData = decryptedValue
+                }
+            };
+
+        }
+        catch (Exception ex)
+        {
+            return new DefaultResponse()
+            {
+                status = false,
+                statusDescription = "Error en el proceso de encriptación.",
+                data = new { error = ex.Message }
+            };
+        }
+    }
+
+    public async Task<DefaultResponse> AesSafeDecrypt(ConfigAesRequest config, AesDecryptRequest request)
+    {
+        try
+        {
+            string decryptedValue = Base64UrlEncoder.Decode(CryptographyAes.WebApi.Utilities.Cryptography.CryptographyAes.AesDecrypt(config, request.encryptedText));
+
+            return new DefaultResponse()
+            {
+                status = true,
+                statusDescription = "Se realiza la encriptación.",
+                data = new
+                {
                     encryptedData = decryptedValue
                 }
             };
