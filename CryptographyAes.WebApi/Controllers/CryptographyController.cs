@@ -48,8 +48,8 @@ public class CryptographyController : ControllerBase
         }
     }
 
-    [HttpPost("v1_0/AesDecrypt", Name = "inSafe")]
-    [HttpPost("v1_0/AesSafeEncrypt", Name = "safe")]
+    [HttpPost("v1_0/AesDecrypt", Name = "inSafeDecrypt")]
+    [HttpPost("v1_0/AesSafeDecrypt", Name = "safeDecrypt")]
     public async Task<IResult> AesDecrypt([FromHeader] ConfigAesRequest config, [FromBody] AesDecryptRequest request)
     {
         try
@@ -57,8 +57,7 @@ public class CryptographyController : ControllerBase
             string endpoint = ControllerContext.ActionDescriptor.AttributeRouteInfo.Name;
 
             DefaultResponse response;
-            var response = await _aesService.AesDecrypt(config, request);
-            if (endpoint == "inSafe")
+            if (endpoint == "inSafeDecrypt")
             {
                 response = await _aesService.AesDecrypt(config, request);
             }

@@ -19,7 +19,8 @@ public class AesService : IAesService
             {
                 status = true,
                 statusDescription = "Se realiza la encriptación.",
-                data = new {
+                data = new
+                {
                     encryptedData = decryptedValue
                 }
             };
@@ -35,7 +36,9 @@ public class AesService : IAesService
             };
 
         }
-    }    public async Task<DefaultResponse> AesSafeEncrypt(ConfigAesRequest config, AesEncryptRequest request)
+    }
+
+    public async Task<DefaultResponse> AesSafeEncrypt(ConfigAesRequest config, AesEncryptRequest request)
     {
         try
         {
@@ -45,7 +48,8 @@ public class AesService : IAesService
             {
                 status = true,
                 statusDescription = "Se realiza la encriptación.",
-                data = new {
+                data = new
+                {
                     encryptedData = decryptedValue
                 }
             };
@@ -73,7 +77,8 @@ public class AesService : IAesService
             {
                 status = true,
                 statusDescription = "Se realiza la encriptación.",
-                data = new {
+                data = new
+                {
                     encryptedData = decryptedValue
                 }
             };
@@ -128,7 +133,8 @@ public class AesService : IAesService
             {
                 status = true,
                 statusDescription = "Se realiza la desencriptación.",
-                data = new {
+                data = new
+                {
                     decryptedData = KeyPass
                 }
             };
@@ -158,7 +164,8 @@ public class AesService : IAesService
             {
                 status = true,
                 statusDescription = "Se realiza la encriptación.",
-                data = new {
+                data = new
+                {
                     data = cipherText,
                     tag = tag
                 }
